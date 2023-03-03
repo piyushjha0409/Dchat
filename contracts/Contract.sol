@@ -80,5 +80,5 @@ contract BlockchainChat {
     userList[me].friendList.push(newFriend);
    }
 
-   //HET
+   //GET MY FRIEND
 }
