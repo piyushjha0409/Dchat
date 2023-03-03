@@ -70,7 +70,15 @@ contract BlockchainChat {
     }
 
     for(uint i=0; i<userList[pubkey1].friendList.length; i++){
-        if(userList[pubkey1].friendList[i].pubkey = pubkey2)
+        if(userList[pubkey1].friendList[i].pubkey = pubkey2) return true;
     }
+     return false;
    }
+
+   function _addFriend(address me, address friend_key, string memory name) internal{
+    friend memory newFriend = friend(friend_key, name);
+    userList[me].friendList.push(newFriend);
+   }
+
+   //HET
 }
