@@ -85,4 +85,23 @@ contract BlockchainChat {
    function getMyFriendList() external view returns(friend[] memory){   
     return userList[msg.sender].friendList;
    }
+
+   //get chat code
+   function _getChatCode(address pubkey1, address pubkey2) internal pure returns(bytes32){
+    if(pubkey1 > pubkey2){
+        return keccak256(abi.encodePacked(pubkey1, pubkey2));
+    }else return keccak256((abi.encodePacked(pubkey1, pubkey2)));
+   }
+
+   //Send message 
+   function sendMessage(address friend_key, string calldata _msg) external {
+    //user already exist or not
+    require(checkUserExists(msg.sender), "Create an account first!");
+    require(checkUserExists(friend_key), "User not registered!");
+    require(checkAlreadyFriends(msg.sender, friend_key), "You guys are not friends!");
+
+    bytes32 chatCode = _getChatCode(msg.sender, friend_key);
+    message memory new = 
+     
+   }
 }
