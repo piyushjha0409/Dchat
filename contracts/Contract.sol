@@ -3,7 +3,6 @@
 pragma solidity <0.9.0;
 
 contract BlockchainChat {
-    event NewMessage(address indexed from, uint timestamp, string message);
 
     //user struct 
     struct user {
@@ -18,14 +17,14 @@ contract BlockchainChat {
     }
 
    //message struct 
-    struct Message {
-        address sender;
+    struct message {
+        address sender; 
         string msg;
         uint timestamp;
     }
 
    mapping(address => user) userList;
-   mapping(bytes32 => Message[]) allMessages;
+   mapping(bytes32 => message[]) allMessages;
 
    //CHECK THE USER EXISTS OR NOT 
    function checkUserExists(address pubkey) public view returns(bool){
@@ -69,16 +68,21 @@ contract BlockchainChat {
         pubkey2 = temp;
     }
 
-    for(uint i=0; i<userList[pubkey1].friendList.length; i++){
-        if(userList[pubkey1].friendList[i].pubkey = pubkey2) return true;
+    for(uint256 i=0; i<userList[pubkey1].friendList.length; i++){
+
+        if(userList[pubkey1].friendList[i].pubkey = pubkey2) return true;   
     }
      return false;
    }
 
+   //function for adding the friend
    function _addFriend(address me, address friend_key, string memory name) internal{
     friend memory newFriend = friend(friend_key, name);
     userList[me].friendList.push(newFriend);
    }
 
    //GET MY FRIEND
+   function getMyFriendList() external view returns(friend[] memory){   
+    return userList[msg.sender].friendList;
+   }
 }
