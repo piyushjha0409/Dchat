@@ -19,9 +19,17 @@ contract BlockchainChat {
    //message struct 
     struct message {
         address sender; 
-        string msg;
         uint timestamp;
+        string msg;
     }
+
+   //All user struck 
+   struct AllUserStruck {
+     string name;  //name of the user 
+     address accountAddress;  //address the of the wallet
+   }
+
+   AllUserStruck[] getAllAppUsers;
 
    mapping(address => user) userList;
    mapping(bytes32 => message[]) allMessages;
@@ -90,7 +98,7 @@ contract BlockchainChat {
    function _getChatCode(address pubkey1, address pubkey2) internal pure returns(bytes32){
     if(pubkey1 > pubkey2){
         return keccak256(abi.encodePacked(pubkey1, pubkey2));
-    }else return keccak256((abi.encodePacked(pubkey1, pubkey2)));
+    }else return keccak256((abi.encodePacked(pubkey2, pubkey1)));
    }
 
    //Send message 
