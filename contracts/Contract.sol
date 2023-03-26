@@ -110,4 +110,9 @@ contract BlockchainChat {
     bytes32 chatCode = _getChatCode(msg.sender, friend_key);
     return allMessages[chatCode];
    }
+
+   //getting all the app users 
+   function getAllAppUsers() public view returns(AllUserStruck[] memory){
+    return getAllUsers;
+   }
 }
