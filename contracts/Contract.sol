@@ -70,7 +70,7 @@ contract BlockchainChat {
 
     for(uint256 i=0; i<userList[pubkey1].friendList.length; i++){
 
-        if(userList[pubkey1].friendList[i].pubkey = pubkey2) return true;   
+        if(userList[pubkey1].friendList[i].pubkey == pubkey2) return true;  //because we are comparing the value of the public key thats why ==   
     }
      return false;
    }
@@ -101,7 +101,13 @@ contract BlockchainChat {
     require(checkAlreadyFriends(msg.sender, friend_key), "You guys are not friends!");
 
     bytes32 chatCode = _getChatCode(msg.sender, friend_key);
-    message memory new = 
-     
+    message memory newMsg = message(msg.sender, block.timestamp, _msg);
+    allMessages[chatCode].push(newMsg);
+   }
+
+   //function for reading the message
+   function readMessage(address friend_key) external view returns(message[] memory){
+    bytes32 chatCode = _getChatCode(msg.sender, friend_key);
+    return allMessages[chatCode];
    }
 }
