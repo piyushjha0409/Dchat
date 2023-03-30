@@ -29,7 +29,7 @@ contract BlockchainChat {
      address accountAddress;  //address the of the wallet
    }
 
-   AllUserStruck[] getAllAppUsers;
+   AllUserStruck[] getAllUsers;
 
    mapping(address => user) userList;
    mapping(bytes32 => message[]) allMessages;
@@ -48,6 +48,8 @@ contract BlockchainChat {
       require(bytes(name).length > 0, "Username cannot be empty");
 
       userList[msg.sender].name = name;
+
+      getAllUsers.push(AllUserStruck(name, msg.sender)); //msg.sender is the account address
    } 
 
    //GET USERNAME
@@ -120,7 +122,7 @@ contract BlockchainChat {
    }
 
    //getting all the app users 
-   function getAllAppUsers() public view returns(AllUserStruck[] memory){
+   function getAllAppUser() public view returns(AllUserStruck[] memory){
     return getAllUsers;
    }
 }
