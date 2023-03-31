@@ -6,10 +6,4 @@ import Model from "./Model/Model";
 import UserCard from "./UserCard/UserCard";
 import Error from "./Error/Error";
 
-export {Navbar};
-export {Filter};
-export {Loader};
-export {Friend};
-export {Model};
-export {UserCard};
-export {Error};
+export {Navbar, Filter, Loader, Friend, Model, UserCard, Error};
