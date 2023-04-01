@@ -2,7 +2,7 @@
 
 pragma solidity <0.9.0;
 
-contract BlockchainChat {
+contract chat {
 
     //user struct 
     struct user {

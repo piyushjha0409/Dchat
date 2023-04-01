@@ -2,12 +2,19 @@ const {ethers} = require('hardhat')
 
 async function main() {
  
-  const chatContract = await ethers.getContractFactory('chat')
+  const chat = await ethers.getContractFactory('chat')
+  const chatContract = await chat.deploy();
+
+  await chatContract.deployed(); //deployed the contract
+
+  console.log(
+    `Contract Deployed at the address of the ${chatContract.address}` 
+  );
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+//script is ready
