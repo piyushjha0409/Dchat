@@ -18,3 +18,4 @@ export const chatAppProvider = ({ children }) => {
         </chatAppContext.Provider>
     )
 }
+    
