@@ -1,5 +1,5 @@
 import {chatAppAddress, chatAppABI, chatContractABI} from "../Context/Constans"
-import web3modal from "./web3modal"
+import web3modal from "web3modal"
 
 // check wallet function 
 export const checkIfWalletConnected = async () => {

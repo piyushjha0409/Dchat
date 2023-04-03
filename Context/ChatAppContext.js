@@ -13,7 +13,7 @@ export const chatAppProvider = ({ children }) => {
     const title =  "Hey Welcome to the decentralized chat application!"
 
     return(
-        <chatAppContext.Provider value={{title}}>
+        <chatAppContext.Provider value={{ title }}>
             {children}
         </chatAppContext.Provider>
     )

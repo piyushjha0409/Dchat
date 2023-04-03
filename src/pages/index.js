@@ -4,6 +4,8 @@ import React, {useEffect, useState, useContext} from 'react'
 import { chatAppContext } from '../../Context/ChatAppContext'
 
 const chatApp = () => {
-  const {title} = useContect(chatAppContext)
+  const { title = 'Default Title' } = useContext(chatAppContext);
   return <div>{title}</div>
 }
+
+export default chatApp;
