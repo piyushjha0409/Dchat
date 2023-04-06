@@ -5,15 +5,15 @@ import { useRouter } from "next/router";
 import { checkIfWalletConnected, connectWallet, connectingWithContract } from "../utils/apiFeatures";
 
 //created the context
-export const chatAppContext = React.createContext({}); 
+export const ChatAppContext = React.createContext({}); 
 
-export const chatAppProvider = ({ children }) => {
+export const ChatAppProvider = ({ children }) => {
     const title =  "Hey Welcome to the decentralized chat application!"
 
     return(
-        <chatAppContext.Provider value={{ title }}>
+        <ChatAppContext.Provider value={{ title }}>
             {children}
-        </chatAppContext.Provider>
+        </ChatAppContext.Provider>
     )
 }
     

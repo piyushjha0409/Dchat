@@ -1,11 +1,11 @@
 import React, {useEffect, useState, useContext} from 'react'
 
 //INTERNAL IMPORT 
-import { chatAppContext } from '../Context/ChatAppContext';
+import { ChatAppContext } from '../Context/ChatAppContext';
 
 
 const chatApp = () => {
-  const {title} = useContext(chatAppContext);
+  const {title} = useContext(ChatAppContext);
   return <div>{title}</div>
 };
 
