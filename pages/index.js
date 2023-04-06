@@ -5,8 +5,8 @@ import { ChatAppContext } from '../Context/ChatAppContext';
 
 
 const chatApp = () => {
-  const {title} = useContext(ChatAppContext);
-  return <div>{title}</div>
+  const {} = useContext(ChatAppContext);
+  return <div></div>
 };
 
 export default chatApp;
