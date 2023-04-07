@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 //INTERNAL IMPORT 
 import { checkIfWalletConnected, connectWallet, connectingWithContract } from "../utils/apiFeatures";
+import { useAmp } from "next/amp";
 
 //created the context
 export const ChatAppContext = React.createContext({}); 
@@ -15,7 +16,7 @@ export const ChatAppProvider = ({ children }) => {
     const [friendLists, setFriendList] = useState([]) //initializing the empty array
     const [friendMsg, setFriendMsg] = useState([])
     const [loading, setLoading] = useState(false); //initializing the value false
-    const [uesrList, userLists] = useState([]) //empty array
+    const [uesrList, setUserLists] = useState([]) //empty array
     const [error, setError] = useState("")
 
     //CURRENT CHAT USER DATA
@@ -40,15 +41,102 @@ export const ChatAppProvider = ({ children }) => {
           setUsername(userName)
 
           // GET THE LIST OF FRIENDS
-          const getFriendList = await contract.
+          const friendList = await contract.getMyFriendList();
+          setFriendList(friendList)
           
+
+          //GET ALL APP USER LIST
+          const userList = await contract.getAllAppUser();
+          setUserLists(userList);
+
         }catch(err){
             setError("Please Install and Connect your wallet!")
         }
     }
 
+    useEffect(() => {
+     fetchData();
+    }, [])
+
+    //READ THE MESSAGE 
+    const readMessage = async (friendAddress) => {
+        try{
+            //connect with contract
+            const contract = await connectingWithContract();
+            const read = contract.readMessage(friendAddress);
+            setFriendMsg(read)
+        }catch(err){
+            setError("You have no chats to read!");
+        }
+    };
+
+    //CREATING THE ACCOUNT
+    const createAccount = async ({name, accountAddress}) => {
+          try{
+            if(name || accountAddress) return setError("Name and Account are mandatory!")
+           //connection with the contract
+           const contract = await connectingWithContract();
+           const getCreatedUser = await contract.createUser(name);
+           setLoading(true); //while the user is creating we have to set the loader.
+           await getCreatedUser.wait(); 
+           setLoading(false)
+           window.location.reload();
+
+          }catch(err){
+            setError("Error while creating the account!")
+          }
+    };
+
+    //ADD FRIENDS
+    const addFriends = async ({name, accountAddress}) =>{
+     try{
+        if(name || accountAddress) return setError("Both are required!")
+
+        //connection with the contract
+        const contract = await connectionWithContract();
+        const addMyfriend = await contract.addFriend(accountAddress, name);
+        setLoading(true);
+        await addMyfriend.wait();
+        setLoading(false);
+        //redirect to the homepage
+        router.push("/");
+        window.location.reload();
+
+     }catch(err){
+        setError("Error Occurred while adding a friend!")
+     }
+
+    };
+    
+    //SEND MESSAGE FUNCTION 
+    const sendMessage = async ({address, msg}) =>{
+        try{
+           if(address || msg) return setError("Please provide message and address!");
+
+           //connecting with the contract 
+           const contract = await connectingWithContract();
+           const adddMessage = await contract.sendMessage(address, msg);
+           setLoading(true);
+           await adddMessage.wait();
+           setLoading(false);
+           window.location.reload();
+
+        }catch(err){
+            setError("Error Occured while sending the message!")
+        }
+    };
+
+    //READ THE USER INFO
+    const readUser = async (userAddress) => {
+       //connecting with contract
+       const contract = await connectingWithContract();
+       const username = await contract.getUseranme(userAddress);
+       setCurrentUsername(username); //setting the current username
+       setCurrentAddress(userAddress); //setting the current user address
+    };
+
     return(
-        <ChatAppContext.Provider value={{  }}>
+        <ChatAppContext.Provider value={{ readMessage, createAccount, addFriends, sendMessage, readUser }}>
             {children}
         </ChatAppContext.Provider>
     )
