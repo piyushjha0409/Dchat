@@ -2,7 +2,7 @@ import React, {useEffect,useReact, useContext} from 'react'
 import Image from "next/image";
 import Link from 'next/link';
 import { ChatAppContext } from '../../Context/ChatAppContext';
-import {Model, Error} from "../index"
+import {Model, Error} from "../Index"
 
 //INTERNAL IMPORT 
 import Style from "./Navbar.module.css"
