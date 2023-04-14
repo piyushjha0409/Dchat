@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 //INTERNAL IMPORT 
 import { checkIfWalletConnected, connectWallet, connectingWithContract } from "../utils/apiFeatures";
-import { useAmp } from "next/amp";
+
 
 //created the context
 export const ChatAppContext = React.createContext({}); 

@@ -1,0 +1,32 @@
+.Navbar{
+    width: 80%;
+    margin: 3rem auto;
+    position: relative;
+}
+
+.Navbar_box{
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    align-items: center;
+    gap: 2rem;
+}
+
+.Navbar_box_right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Navbar_box_right_menu{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 2px solid transparent;
+
+}
+
+.active_button {
+    color: #F18303;
+     
+    
+}
