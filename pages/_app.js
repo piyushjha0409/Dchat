@@ -2,7 +2,7 @@ import '../styles/globals.css'
 //INTERNAL IMPORT 
 import { ChatAppProvider } from '../Context/ChatAppContext';
 import React, { useState, useEffect } from 'react';
-import { Navbar } from '../components/index'
+import { Navbar } from '../components/Index'
 
 
 
