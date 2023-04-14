@@ -55,7 +55,9 @@ const Navbar = () => {
       {/* DESKTOP  */}
      <div className={Style.Navbar_box_right_menu}>
       {menuItems.map((el, i) =>(
-        <div onClick={()=> setActive(i + 1)} key={i + 1} className={`${Style.Navbar_box_right_menu_item} ${active == i + 1 ? Style.active_btn: ""}`}>
+        <div onClick={()=> setActive(i + 1)} 
+        key={i + 1} 
+        className={`${Style.Navbar_box_right_menu_item} ${active == i + 1 ? Style.active_btn: ""}`}>
           <Link className={Style.Navbar_box_right_menu_items_link}
           href={el.menu}
           >{el.menu}</Link>
