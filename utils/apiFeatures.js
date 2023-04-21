@@ -35,7 +35,7 @@ try{
 
 //function for the fetching the details of the contract 
 const fetchContract = (signerOrProvider) => {
- new ethers.Contract(chatContractABI, chatAppAddress, signerOrProvider);
+ new ethers.Contract(chatAppAddress, chatContractABI, signerOrProvider);
 }
 
 //function for connecting the contract
