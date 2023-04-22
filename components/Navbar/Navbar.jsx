@@ -7,6 +7,7 @@ import Style from "./Navbar.module.css"
 import { ChatAppContext } from "../../Context/ChatAppContext"
 import { Model, Error } from "../Index";
 import images from "../../assets";
+import { TASK_FLATTEN_GET_FLATTENED_SOURCE } from "hardhat/builtin-tasks/task-names";
 
 
 const NavBar = () => {
@@ -40,7 +41,7 @@ const NavBar = () => {
   //USESTATE
   const [active, setActive] = useState(2);
   const [open, setOpen] = useState(false);
-  const [openModel, setOpenModel] = useState(false);
+  const [openModel, setOpenModel] = useState(true);
 
   const { account, userName, connectWallet, createAccount, error } =
     useContext(ChatAppContext);

@@ -73,7 +73,7 @@ export const ChatAppProvider = ({ children }) => {
     //CREATING THE ACCOUNT
     const createAccount = async ({name, accountAddress}) => {
           try{
-            if(name || accountAddress) return setError("Name and Account are mandatory!")
+            // if(name || accountAddress) return setError("Name and Account are mandatory!")
            //connection with the contract
            const contract = await connectingWithContract();
            const getCreatedUser = await contract.createUser(name);
