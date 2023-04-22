@@ -8,6 +8,7 @@ import { ChatAppContext } from "../../Context/ChatAppContext"
 import { Model, Error } from "../Index";
 import images from "../../assets";
 
+
 const NavBar = () => {
   const menuItems = [
     {
@@ -39,7 +40,7 @@ const NavBar = () => {
   //USESTATE
   const [active, setActive] = useState(2);
   const [open, setOpen] = useState(false);
-  const [openModel, setOpenModel] = useState(false);
+  const [openModel, setOpenModel] = useState(true);
 
   const { account, userName, connectWallet, createAccount, error } =
     useContext(ChatAppContext);

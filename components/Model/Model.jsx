@@ -1,16 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Image from 'next/image'
 
 //Internal Import 
-// import Style from "" 
-import images from "../../assets"
 import { ChatAppContext } from '../../Context/ChatAppContext'
 import { Loader } from '../Index'
+import images from "../../assets"
+import Style from "./Model.module.css"
+
 
 const Model = ({
   openBox,
   title,
-  address,
+  address, //this is parameter through which account will be passed
   head,
   info,
   smallinfo,
@@ -22,6 +23,8 @@ const Model = ({
   const [name, setName] = useState("");
   const [accountAddress, setAccountAddress] = useState("");
 
+   const {loading} = useContext(ChatAppContext)
+   
   return (
     <div className={Style.Model}>
       <div className={Style.Model_box}>
@@ -59,11 +62,15 @@ const Model = ({
             Submit
           </button>
 
-          <button onClick={()=> openBox(false)}></button>
+          <button onClick={()=> openBox(false)}>
           {""}
+          <Image src={images.close} alt="send" width={30} height={30} />
+          {""}
+          Cancel
+          </button>
         </div>
         </div>
-      )}
+       )}
       </div>
 
     </div>
