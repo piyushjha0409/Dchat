@@ -1,5 +1,10 @@
 import React from 'react'
 
+
+//INTERNAL IMPORT 
+import Style from "./Loader.module.css"
+import { images } from '../../assets'
+
 const Loader = () => {
   return (
     <div className={Style.Loader}>

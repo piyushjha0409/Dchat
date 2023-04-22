@@ -54,6 +54,15 @@ const Model = ({
            onChange={(e) => setName(e.target.value)}
            />
         </div>
+        <div className={Style.Model_box_right_name_info}>
+         <Image src={images.account} alt='user' width={30} height={30} />
+         <input 
+         type='text'
+         placeholder={address || "Enter the address..."}
+         onChange={(e) => setAccountAddress(e.target.value)}
+         />
+        </div>
+        
         <div className={Style.Model_box_right_name_btn}>
           <button onClick={() =>  functionName({ name, accountAddress})}>
             {""}
@@ -72,7 +81,6 @@ const Model = ({
         </div>
        )}
       </div>
-
     </div>
   )
 }
