@@ -31,6 +31,7 @@ const Model = ({
       <div className={Style.box_left}>
       <Image src={image} alt="buddy" width={700} height={700} />
       </div>
+      <div className={Style.Model_box_right}>
       <h1>
         {title} <span>{head}</span>
       </h1>
@@ -80,6 +81,7 @@ const Model = ({
         </div>
         </div>
        )}
+       </div>
       </div>
     </div>
   )
