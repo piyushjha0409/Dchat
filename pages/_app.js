@@ -4,9 +4,6 @@ import { ChatAppProvider } from '../Context/ChatAppContext';
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Index'
 
-
-
-
 const MyApp = ({ Component, pageProps } ) => {
 
 const [domLoaded, setDomLoaded] = useState(false); //initialized in false 

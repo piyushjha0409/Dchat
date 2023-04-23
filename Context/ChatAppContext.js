@@ -49,8 +49,8 @@ export const ChatAppProvider = ({ children }) => {
           const userList = await contract.getAllAppUser();
           setUserLists(userList);
 
-        }catch(err){
-            setError("Please Install and Connect your wallet!")
+        }catch(error){
+            setError(error)
         }
     }
 
@@ -90,7 +90,7 @@ export const ChatAppProvider = ({ children }) => {
     //ADD FRIENDS
     const addFriends = async ({name, accountAddress}) =>{
      try{
-        if(name || accountAddress) return setError("Both are required!")
+        // if(name || accountAddress) return setError("Both are required!")
 
         //connection with the contract
         const contract = await connectionWithContract();
