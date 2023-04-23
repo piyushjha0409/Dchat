@@ -51,7 +51,7 @@ const Model = ({
            />
            <input 
            type='text'
-           placeholder='your name'
+           placeholder='Enter your name'
            onChange={(e) => setName(e.target.value)}
            />
         </div>
@@ -59,7 +59,7 @@ const Model = ({
          <Image src={images.account} alt='user' width={30} height={30} />
          <input 
          type='text'
-         placeholder={address || "Enter the address..."}
+         placeholder={address || "Enter your address..."}
          onChange={(e) => setAccountAddress(e.target.value)}
          />
         </div>
