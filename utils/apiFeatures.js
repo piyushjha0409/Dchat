@@ -1,5 +1,7 @@
-import {chatAppAddress, chatAppABI, chatContractABI} from "../Context/Constans"
-import web3modal from "web3modal"
+import Web3Modal from "web3modal";
+import { ethers } from "ethers";
+
+import {chatAppAddress, chatContractABI} from "../Context/Constans"
 
 // check wallet function 
 export const checkIfWalletConnected = async () => {
@@ -13,8 +15,8 @@ export const checkIfWalletConnected = async () => {
     //we will get the array of the account 
     let firstAccount = accounts[0];
     return firstAccount;
-  }catch(err){
-    console.error(err)
+  }catch(error){
+    console.log(error)
   }
 }
 
@@ -41,14 +43,14 @@ const fetchContract = (signerOrProvider) => {
 //function for connecting the contract
 export const connectingWithContract = async() => {
     try{
-        const web3modal = await new web3modal();
-        const connection = web3modal.connect();
+        const web3modal = new Web3Modal();
+        const connection = await web3modal.connect();
         const provider = new ethers.providers.Web3Provider(connection)
         const signer = provider.getSigner(); 
         const contract = fetchContract(signer)
         return contract;
-    }catch(err){
-        console.error(err)
+    }catch(error){
+        console.log(error)
     }
 }
 

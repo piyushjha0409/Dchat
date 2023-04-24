@@ -37,8 +37,8 @@ export const ChatAppProvider = ({ children }) => {
          setAccounts(ConnectAccount); // setting it  to the current account
          
          //GET THE USERNAME
-          const userName = await contract.getUsername(ConnectAccount); //getting this function from the contract
-          setUsername(userName)
+        //   const userName = await contract.getUsername(ConnectAccount); //getting this function from the contract
+        //   setUsername(userName)
 
           // GET THE LIST OF FRIENDS
           const friendList = await contract.getMyFriendList();
@@ -148,7 +148,11 @@ export const ChatAppProvider = ({ children }) => {
             username,
             friendLists,
             friendMsg,
-            uesrList
+            uesrList,
+            loading,
+            error,
+            currentUsername,
+            currentUserAddress
              }}>
             {children}
         </ChatAppContext.Provider>
