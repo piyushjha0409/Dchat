@@ -50,7 +50,7 @@ export const ChatAppProvider = ({ children }) => {
           setUserLists(userList);
 
         }catch(error){
-            setError(error)
+            console.log(error);
         }
     }
 
@@ -66,7 +66,7 @@ export const ChatAppProvider = ({ children }) => {
             const read = contract.readMessage(friendAddress);
             setFriendMsg(read)
         }catch(err){
-            setError("You have no chats to read!");
+            console.log("Currently You have no friends to chat!")
         }
     };
 
@@ -93,7 +93,7 @@ export const ChatAppProvider = ({ children }) => {
         // if(name || accountAddress) return setError("Both are required!")
 
         //connection with the contract
-        const contract = await connectionWithContract();
+        const contract = await connectingWithContract();
         const addMyfriend = await contract.addFriend(accountAddress, name);
         setLoading(true);
         await addMyfriend.wait();
