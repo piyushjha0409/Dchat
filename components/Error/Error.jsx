@@ -1,12 +1,16 @@
-import React, {useEffect} from 'react'
-
+import React from 'react'
+import { useEffect } from 'react'
 
 //INTERNAL IMPORT 
 import Style from "./Error.module.css"
 
 
+
 const Error = ({error}) => {
 
+  useEffect(()=>{
+   console.log(error)
+  })
   return (
     <div className={Style.Error}>
      <div className={Style.Error_box}>
