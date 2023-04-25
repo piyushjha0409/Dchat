@@ -5,35 +5,41 @@ import {chatAppAddress, chatContractABI} from "../Context/Constans"
 
 // check wallet function 
 export const checkIfWalletConnected = async () => {
-  try{
-    if(!window.ethereum) return console.log("Install Metamask")
+  try {
+    if (!window.ethereum) return console.log("Install MetaMask");
 
     const accounts = await window.ethereum.request({
-        method: "eth_accounts",
-    })
+      method: "eth_accounts",
+    });
 
-    //we will get the array of the account 
-    let firstAccount = accounts[0];
+    const firstAccount = accounts[0];
     return firstAccount;
-  }catch(error){
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
-}
+};
+
 
 //connect wallet function 
 export const connectWallet = async () => {
-try{
-    if(!window.ethereum) return console.log("Install metamask")
- 
+  try {
+    // if (!window.ethereum) return console.log("Install MateMask");
+
+    // const accounts = await window.ethereum.request({
+    //   method: "eth_requestAccounts",
+    // });
+
+    if (!window.ethereum) return console.log("Install MetaMask");
+
     const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts"   
-    })
+      method: "eth_requestAccounts",
+    });
     const firstAccount = accounts[0];
     return firstAccount;
-}catch(err){
-    console.error(err)
-}
-}
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //function for the fetching the details of the contract 
 const fetchContract = (signerOrProvider) => {
@@ -41,18 +47,18 @@ const fetchContract = (signerOrProvider) => {
 }
 
 //function for connecting the contract
-export const connectingWithContract = async() => {
-    try{
-        const web3modal = new Web3Modal();
-        const connection = await web3modal.connect();
-        const provider = new ethers.providers.Web3Provider(connection)
-        const signer = provider.getSigner(); 
-        const contract = fetchContract(signer)
-        return contract;
-    }catch(error){
-        console.log(error)
-    }
-}
+export const connectingWithContract = async () => {
+  try {
+    const web3modal = new Web3Modal();
+    const connection = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+    const contract = fetchContract(signer);
+    return contract;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //function for the converting the timestamp
 export const timeFunction = async (time) => {
