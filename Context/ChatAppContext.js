@@ -8,7 +8,6 @@ import { checkIfWalletConnected, connectWallet, connectingWithContract } from ".
 //created the context
 export const ChatAppContext = React.createContext({}); 
 
-export const ChatAppContect = React.createContext();
 
 export const ChatAppProvider = ({ children }) => {
   //USESTATE
