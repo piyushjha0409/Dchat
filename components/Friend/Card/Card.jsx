@@ -5,13 +5,20 @@ import Image from 'next/image'
 import Style from "./Card.module.css"
 import { ChatAppContext } from '../../../Context/ChatAppContext'
 import images from "../../../assets"
+import Link from 'next/link'
 
 const Card = ({ readMessage, el , i, readUser}) => {
-  console.log(el)
+  console.log(el);
   return (
+    <Link
+    href={{pathname: "/",
+   query: {name:`${el.name}`, address:`${el.pubkey}`}}}
+    >
+     
     <div>
         
     </div>
+    </Link>
   )
 }
 
