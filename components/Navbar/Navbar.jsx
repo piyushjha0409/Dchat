@@ -43,7 +43,8 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);
 
-  const {account, connectWallet, userName, createAccount, error } = useContext(ChatAppContext)
+  const {account, userName, connectWallet, createAccount, error } = useContext(ChatAppContext)
+  
  
   
   return (
@@ -104,7 +105,7 @@ const NavBar = () => {
 
           {/* CONNECT WALLET */}
           <div className={Style.NavBar_box_right_connect}>
-            {account !== false ? (
+            {account == "" ? (
               <button onClick={() => connectWallet()}>
                 {""}
                 <span>Connect Wallet</span>

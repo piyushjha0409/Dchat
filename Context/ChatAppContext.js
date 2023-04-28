@@ -33,15 +33,15 @@ export const ChatAppProvider = ({ children }) => {
       // //GET ACCOUNT
       const connectAccount = await connectWallet();
       setAccount(connectAccount);
-      // // //GET USER NAME
-      // const userName = await contract.getUsername(connectAccount);
-      // setUserName(userName);
-      // //GET MY FRIEND LIST
-      // const friendLists = await contract.getMyFriendList();
-      // setFriendLists(friendLists);
-      // //GET ALL APP USER LIST
-      // const userList = await contract.getAllAppUser();
-      // setUserLists(userList);
+      // //GET USER NAME
+      const userName = await contract.getUsername(connectAccount);
+      setUserName(userName);
+      //GET MY FRIEND LIST
+      const friendLists = await contract.getMyFriendList();
+      setFriendLists(friendLists);
+      //GET ALL APP USER LIST
+      const userList = await contract.getAllAppUser();
+      setUserLists(userList);
     } catch (error) {
       console.log("Please Install And Connect Your Wallet");
       console.log(error);
