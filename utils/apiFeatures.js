@@ -25,6 +25,8 @@ export const connectWallet = async () => {
   const provider = new Web3(window.ethereum)
   const accounts = await provider.eth.getAccounts();
   console.log(accounts[0]); //this is showing the wallet address
+  const firstAccount = accounts[0];
+  return firstAccount;
   } catch (error) {
     console.log(error);
   }

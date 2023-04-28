@@ -34,8 +34,8 @@ export const ChatAppProvider = ({ children }) => {
       const connectAccount = await connectWallet();
       setAccount(connectAccount);
       // // //GET USER NAME
-      // // const userName = await contract.getUsername(connectAccount);
-      // setUserName(userName);
+      const username = await contract.getUsername(connectAccount)
+      setUserName(username)
       // //GET MY FRIEND LIST
       // const friendLists = await contract.getMyFriendList();
       // setFriendLists(friendLists);
@@ -49,6 +49,7 @@ export const ChatAppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData()
+    console.log(account)
   }, []);
 
   //READ MESSAGE
