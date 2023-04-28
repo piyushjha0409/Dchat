@@ -1,9 +1,8 @@
 import Web3Modal from "web3modal";
 import {ethers} from "ethers"
 import Web3 from "web3";
-// import detectEthereumProvider from '@metmask/detect-provider'
 
-
+//INTERNAL IMPORT
 import {chatContractABI, chatContractAddress} from "../Context/Constans"
 
 // check wallet function 
@@ -15,22 +14,6 @@ export const checkIfWalletConnected = async () => {
   console.log(accounts[0])
   return accounts[0];
 };
-
-//second method
-// const loadWeb3 = async () => {
-// const provider = await detectEthereumProvider()
-
-// if (provider) {
-//   console.log('Ethereum successfully detected!')
-
-//   const chainId = await provider.request({
-//     method: 'eth_chainId'
-//   })
-// } else {
-//   // if the provider is not detected, detectEthereumProvider resolves to null
-//   console.error('Please install MetaMask!' )
-// }
-// }
 
 
 //connect wallet function 
@@ -61,14 +44,19 @@ const fetchContract = (signerOrProvider) => {
 
 //function for connecting the contract
 export const connectingWithContract = async () => {
-  try {
-    const web3modal = new Web3Modal();
-    const connection = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
-    const signer = provider.getSigner();
-    const contract = fetchContract(signer);
-    return contract;
-  } catch (error) {
+  // try {
+  //   const web3modal = new Web3Modal();
+  //   const connection = await web3modal.connect();
+  //   const provider = new ethers.providers.Web3Provider(connection);
+  //   const signer = provider.getSigner();
+  //   const contract = fetchContract(signer);
+  //   return contract;
+  // } catch (error) {
+  //   console.log(error);
+  // }
+  try{
+    
+  }catch(error){
     console.log(error);
   }
 };
