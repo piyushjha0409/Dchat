@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 
 //INTERNAL IMPORT 
-import { checkIfWalletConnected, connectWallet, connectingWithContract } from "../utils/apiFeatures";
+import {connectingWithContract, checkIfWalletConnected, connectWallet} from "../utils/apiFeatures"
 
 
 //created the context
@@ -28,27 +28,28 @@ export const ChatAppProvider = ({ children }) => {
   //FETCH DATA TIME OF PAGE LOAD
   const fetchData = async () => {
     try {
-      //GET CONTRACT
+      // GET CONTRACT
       const contract = await connectingWithContract();
-      //GET ACCOUNT
+      // //GET ACCOUNT
       const connectAccount = await connectWallet();
       setAccount(connectAccount);
-      //GET USER NAME
-      const userName = await contract.getUsername(connectAccount);
-      setUserName(userName);
-      //GET MY FRIEND LIST
-      const friendLists = await contract.getMyFriendList();
-      setFriendLists(friendLists);
-      //GET ALL APP USER LIST
-      const userList = await contract.getAllAppUser();
-      setUserLists(userList);
+      // // //GET USER NAME
+      // const userName = await contract.getUsername(connectAccount);
+      // setUserName(userName);
+      // //GET MY FRIEND LIST
+      // const friendLists = await contract.getMyFriendList();
+      // setFriendLists(friendLists);
+      // //GET ALL APP USER LIST
+      // const userList = await contract.getAllAppUser();
+      // setUserLists(userList);
     } catch (error) {
-      // setError("Please Install And Connect Your Wallet");
+      console.log("Please Install And Connect Your Wallet");
       console.log(error);
     }
   };
+
   useEffect(() => {
-    fetchData();
+    fetchData()
   }, []);
 
   //READ MESSAGE

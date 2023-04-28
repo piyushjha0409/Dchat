@@ -53,10 +53,10 @@ contract chat {
    } 
 
    //GET USERNAME
-   function getUsername(address pubkey) external view returns(string memory){
-    require(checkUserExists(pubkey), "User is not registered!");
-    return userList[pubkey].name;
-   }
+    function getUsername(address pubkey) external view returns(string memory){
+        require(checkUserExists(pubkey), "User is not registered");
+        return userList[pubkey].name;
+    }
 
    //Adding a friend
    function addFriend(address friend_key, string calldata name) external{
